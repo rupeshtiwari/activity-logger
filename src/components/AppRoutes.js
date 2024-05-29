@@ -1,17 +1,9 @@
 import React from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import EmployeeDetailPage from '../pages/EmployeeDetailPage';
 import AdminPage from '../pages/AdminPage';
 
-// Dummy function to check user role
-const getUserRole = () => {
-  // This should be replaced with actual user role checking logic
-  return 'manager'; // 'manager' or 'employee'
-};
-
-const AppRoutes = () => {
-  const userRole = getUserRole();
-
+const AppRoutes = ({ userRole }) => {
   return (
     <Routes>
       <Route path='/employee/:id' element={<EmployeeDetailPage />} />
@@ -19,7 +11,7 @@ const AppRoutes = () => {
       <Route
         path='/'
         element={
-          userRole === 'manager' ? (
+          userRole === 'admin' ? (
             <Navigate to='/admin' />
           ) : (
             <Navigate to='/employee/1' />

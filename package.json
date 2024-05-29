@@ -2,7 +2,7 @@
   "name": "activity-logger",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rupeshtiwari.github.io/activity-logger",
+  "homepage": "https://rupeshtiwari.com/activity-logger",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
@@ -29,10 +29,12 @@
     "build-publish": "npm run build && amplify publish",
     "amplify-mock": "amplify mock",
     "start-with-mock": "concurrently \"npm run start\" \"npm run amplify-mock\""
+ 
   },
   "devDependencies": {
     "concurrently": "^6.5.1",
     "cpy-cli": "^5.0.0",
+    "cross-env": "^7.0.3",
     "serve": "^11.3.2"
   },
   "eslintConfig": {

@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-Live demo of this app: https://www.rupeshtiwari.com/admin 
+Live demo of this app: https://www.rupeshtiwari.com/activity-logger 
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

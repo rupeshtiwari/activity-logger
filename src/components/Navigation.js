@@ -1,16 +1,8 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
-// Dummy function to check user role
-const getUserRole = () => {
-  // This should be replaced with actual user role checking logic
-  return 'manager'; // 'manager' or 'employee'
-};
-
-const Navigation = () => {
-  const userRole = getUserRole();
-
+const Navigation = ({ userRole }) => {
   return (
     <Navbar bg='dark' variant='dark' expand='lg'>
       <Container>
@@ -20,7 +12,7 @@ const Navigation = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
-            {userRole === 'manager' && (
+            {userRole === 'admin' && (
               <Nav.Link as={Link} to='/admin'>
                 Admin Dashboard
               </Nav.Link>
