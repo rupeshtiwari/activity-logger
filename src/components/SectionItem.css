@@ -1,60 +1,32 @@
+/* src/components/SectionItem.css */
+
 .section-item {
-  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s;
+}
+
+.section-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .section-item span {
-  font-size: 1.1em;
-  color: #333;
+  font-size: 1em;
+  color: #0073b1;
 }
 
 .section-item .form-control {
-  width: 60px;
-  padding: 5px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+  max-width: 60px;
 }
 
-.section-item .btn-outline-primary {
-  color: #0073b1;
-  border-color: #0073b1;
+.section-item .section-item-alert {
+  font-size: 0.875em;
+  padding: 5px 10px;
 }
 
-.section-item .btn-outline-primary:hover {
-  background-color: #0073b1;
-  color: white;
-}
-
-.section-item .btn-outline-success {
-  color: #28a745;
-  border-color: #28a745;
-}
-
-.section-item .btn-outline-success:hover {
-  background-color: #28a745;
-  color: white;
-}
-
-.section-item .btn-outline-danger {
-  color: #dc3545;
-  border-color: #dc3545;
-}
-
-.section-item .btn-outline-danger:hover {
-  background-color: #dc3545;
-  color: white;
-}
-
-.section-item .alert-danger {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-color: #f5c6cb;
-  margin-top: 5px;
-}
-
-.mr-1 {
+.section-item .btn {
   margin-right: 5px;
-}
-
-.mr-2 {
-  margin-right: 10px;
 }

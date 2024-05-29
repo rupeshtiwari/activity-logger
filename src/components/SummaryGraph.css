@@ -1,8 +1,12 @@
-.summary-graph {
-  margin-bottom: 20px;
+/* src/components/SummaryGraph.css */
+
+.card-title {
+  font-size: 1.25em;
+  color: #0073b1;
+  display: flex;
+  align-items: center;
 }
 
-.summary-graph canvas {
-  width: 100% !important;
-  height: 300px !important;
+.card-title .mr-2 {
+  margin-right: 0.5rem;
 }

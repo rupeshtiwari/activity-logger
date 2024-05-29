@@ -41,7 +41,7 @@ const SummaryGraph = ({ data }) => {
           labels: data.labels,
           datasets: [
             {
-              label: 'Section Counts',
+              label: '',
               data: data.values,
               backgroundColor: [
                 '#4caf50', // Green
@@ -62,11 +62,6 @@ const SummaryGraph = ({ data }) => {
             },
             y: {
               beginAtZero: true,
-            },
-          },
-          plugins: {
-            legend: {
-              display: false,
             },
           },
         },
