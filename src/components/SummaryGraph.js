@@ -41,7 +41,6 @@ const SummaryGraph = ({ data }) => {
           labels: data.labels,
           datasets: [
             {
-              label: '',
               data: data.values,
               backgroundColor: [
                 '#4caf50', // Green

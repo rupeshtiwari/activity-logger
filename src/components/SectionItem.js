@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEdit,
@@ -14,13 +14,19 @@ const SectionItem = ({ name, count, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newCount, setNewCount] = useState(count);
   const [warning, setWarning] = useState('');
+  const inputRef = useRef(null);
 
-  const handleEdit = () => setIsEditing(true);
+  const handleEdit = () => {
+    setIsEditing(true);
+    setTimeout(() => inputRef.current && inputRef.current.focus(), 0);
+  };
+
   const handleCancel = () => {
     setIsEditing(false);
     setNewCount(count);
     setWarning('');
   };
+
   const handleCommit = () => {
     if (newCount <= config.maxPoints) {
       setIsEditing(false);
@@ -55,6 +61,7 @@ const SectionItem = ({ name, count, onUpdate }) => {
               size='sm'
               max={config.maxPoints}
               min='0'
+              ref={inputRef}
             />
             {warning && (
               <Alert variant='danger' className='mt-2 p-2 section-item-alert'>
