@@ -3,7 +3,7 @@ const initialData = {
     {
       id: 1,
       name: 'Rofus RockStar',
-      link: 'https://www.fakeprofile.com/user1',
+      link: 'https://randomuser.me/',
       level: 6,
       score: 24,
       picture: 'https://randomuser.me/api/portraits/men/1.jpg',
@@ -13,7 +13,7 @@ const initialData = {
     {
       id: 2,
       name: 'Jane Doe',
-      link: 'https://www.fakeprofile.com/user2',
+      link: 'https://randomuser.me/',
       level: 5,
       score: 20,
       picture: 'https://randomuser.me/api/portraits/women/2.jpg',
@@ -23,7 +23,7 @@ const initialData = {
     {
       id: 3,
       name: 'John Smith',
-      link: 'https://www.fakeprofile.com/user3',
+      link: 'https://randomuser.me/',
       level: 7,
       score: 30,
       picture: 'https://randomuser.me/api/portraits/men/3.jpg',
@@ -33,7 +33,7 @@ const initialData = {
     {
       id: 4,
       name: 'Alice Johnson',
-      link: 'https://www.fakeprofile.com/user4',
+      link: 'https://randomuser.me/',
       level: 4,
       score: 18,
       picture: 'https://randomuser.me/api/portraits/women/4.jpg',
@@ -43,7 +43,7 @@ const initialData = {
     {
       id: 5,
       name: 'Bob Brown',
-      link: 'https://www.fakeprofile.com/user5',
+      link: 'https://randomuser.me/',
       level: 3,
       score: 15,
       picture: 'https://randomuser.me/api/portraits/men/5.jpg',
@@ -53,7 +53,7 @@ const initialData = {
     {
       id: 6,
       name: 'Charlie Davis',
-      link: 'https://www.fakeprofile.com/user6',
+      link: 'https://randomuser.me/',
       level: 2,
       score: 10,
       picture: 'https://randomuser.me/api/portraits/men/6.jpg',

@@ -79,7 +79,7 @@ const SummaryGraph = ({ data }) => {
       <Card.Body>
         <Card.Title>
           <FontAwesomeIcon icon={faChartBar} className='mr-2' />
-          Summary Graph
+          Portfolio Stats
         </Card.Title>
         <div style={{ height: '300px' }}>
           <canvas ref={canvasRef}></canvas>

@@ -2,8 +2,6 @@ import React from 'react';
 import { Card, Row, Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUser,
-  faLink,
   faLevelUpAlt,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
