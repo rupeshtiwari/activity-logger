@@ -1,20 +1,43 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'; // Removed faTrash
-import { InputGroup, FormControl, Button, Row, Col } from 'react-bootstrap';
+import {
+  faEdit,
+  faCheck,
+  faTimes,
+  faExclamationTriangle,
+} from '@fortawesome/free-solid-svg-icons';
+import { FormControl, Button, Row, Col, Alert } from 'react-bootstrap';
+import config from '../config';
+import '../App.css'; // Make sure to import the CSS for animations
 
 const SectionItem = ({ name, count, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newCount, setNewCount] = useState(count);
+  const [warning, setWarning] = useState('');
 
   const handleEdit = () => setIsEditing(true);
   const handleCancel = () => {
     setIsEditing(false);
     setNewCount(count);
+    setWarning('');
   };
   const handleCommit = () => {
-    setIsEditing(false);
-    onUpdate(newCount);
+    if (newCount <= config.maxPoints) {
+      setIsEditing(false);
+      onUpdate(newCount);
+      setWarning('');
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    if (isNaN(value) || value <= config.maxPoints) {
+      setNewCount(value);
+      setWarning('');
+    } else {
+      setNewCount(value);
+      setWarning(`Max ${config.maxPoints}`);
+    }
   };
 
   return (
@@ -24,12 +47,24 @@ const SectionItem = ({ name, count, onUpdate }) => {
       </Col>
       <Col xs={2}>
         {isEditing ? (
-          <FormControl
-            type='number'
-            value={newCount}
-            onChange={(e) => setNewCount(parseInt(e.target.value, 10))}
-            size='sm'
-          />
+          <>
+            <FormControl
+              type='number'
+              value={newCount}
+              onChange={handleInputChange}
+              size='sm'
+              max={config.maxPoints}
+            />
+            {warning && (
+              <Alert variant='danger' className='mt-2 p-2'>
+                <FontAwesomeIcon
+                  icon={faExclamationTriangle}
+                  className='mr-1'
+                />
+                {warning}
+              </Alert>
+            )}
+          </>
         ) : (
           <span>{count}</span>
         )}

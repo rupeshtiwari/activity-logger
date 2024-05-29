@@ -23,17 +23,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "cpy 'build/**/*' docs --parents",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build-publish": "npm run build && amplify publish",
     "amplify-mock": "amplify mock",
-    "start-with-mock": "concurrently \"npm run start\" \"npm run amplify-mock\"",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build" 
+    "start-with-mock": "concurrently \"npm run start\" \"npm run amplify-mock\""
   },
   "devDependencies": {
     "concurrently": "^6.5.1",
-    "gh-pages": "^6.1.1",
+    "cpy-cli": "^5.0.0",
     "serve": "^11.3.2"
   },
   "eslintConfig": {

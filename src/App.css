@@ -19,8 +19,7 @@
 .sortable-header {
   cursor: pointer;
 }
-/* Add spacing for the FontAwesome icons */
-/* Add spacing for the FontAwesome icons */
+ /* Add spacing for the FontAwesome icons */
 .card-title .mr-2,
 .card-body .mr-2,
 .h5 .mr-2,
@@ -30,4 +29,24 @@
 
 .a .ml-2 {
   margin-left: 0.5rem;
+}
+
+/* Animation for the warning message */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Additional styles for warning alert */
+.alert {
+  display: flex;
+  align-items: center;
+}
+
+.alert .mr-1 {
+  margin-right: 0.5rem;
 }
