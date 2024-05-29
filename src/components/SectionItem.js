@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, Button, Row, Col, Alert } from 'react-bootstrap';
 import config from '../config';
-import '../App.css'; // Make sure to import the CSS for animations
+import './SectionItem.css';
 
 const SectionItem = ({ name, count, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -35,13 +35,13 @@ const SectionItem = ({ name, count, onUpdate }) => {
       setNewCount(value);
       setWarning('');
     } else {
-      setNewCount(value);
+      setNewCount(config.maxPoints);
       setWarning(`Max ${config.maxPoints}`);
     }
   };
 
   return (
-    <Row className='align-items-center mb-2'>
+    <Row className='align-items-center mb-2 section-item'>
       <Col xs={6}>
         <span>{name}</span>
       </Col>
@@ -54,9 +54,10 @@ const SectionItem = ({ name, count, onUpdate }) => {
               onChange={handleInputChange}
               size='sm'
               max={config.maxPoints}
+              min='0'
             />
             {warning && (
-              <Alert variant='danger' className='mt-2 p-2'>
+              <Alert variant='danger' className='mt-2 p-2 section-item-alert'>
                 <FontAwesomeIcon
                   icon={faExclamationTriangle}
                   className='mr-1'
@@ -90,16 +91,14 @@ const SectionItem = ({ name, count, onUpdate }) => {
             </Button>
           </>
         ) : (
-          <>
-            <Button
-              variant='outline-primary'
-              size='sm'
-              onClick={handleEdit}
-              className='mr-2'
-            >
-              <FontAwesomeIcon icon={faEdit} />
-            </Button>
-          </>
+          <Button
+            variant='outline-primary'
+            size='sm'
+            onClick={handleEdit}
+            className='mr-2'
+          >
+            <FontAwesomeIcon icon={faEdit} />
+          </Button>
         )}
       </Col>
     </Row>

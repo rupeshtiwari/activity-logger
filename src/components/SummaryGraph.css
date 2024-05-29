@@ -1,0 +1,8 @@
+.summary-graph {
+  margin-bottom: 20px;
+}
+
+.summary-graph canvas {
+  width: 100% !important;
+  height: 300px !important;
+}

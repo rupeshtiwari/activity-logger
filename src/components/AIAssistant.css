@@ -1,0 +1,42 @@
+/* src/components/AIAssistant.css */
+.card {
+  margin-bottom: 20px;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.2em;
+  color: #0073b1;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.card-title .mr-2 {
+  margin-right: 8px;
+}
+
+.card-body p {
+  font-size: 1em;
+  color: #333;
+}
+
+h5 {
+  font-size: 1.1em;
+  color: #0073b1;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 10px;
+}

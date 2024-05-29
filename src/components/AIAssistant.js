@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Spinner } from 'react-bootstrap';
+import { fetchAIAdvice } from '../data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLightbulb,
   faThumbsUp,
-  faSmile,
-  faUserCheck,
+  faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import { fetchAIAdvice } from '../data';
+import './AIAssistant.css';
 
 const AIAssistant = ({ employeeId }) => {
   const [advice, setAdvice] = useState(null);
@@ -32,32 +32,23 @@ const AIAssistant = ({ employeeId }) => {
           <Spinner animation='border' />
         ) : (
           <>
-            <p>
-              <FontAwesomeIcon icon={faSmile} className='mr-2' />
-              {advice.summary}
-            </p>
+            <p>{advice.summary}</p>
             <h5>
               <FontAwesomeIcon icon={faThumbsUp} className='mr-2' />
               Tips
             </h5>
             <ul>
               {advice.tips.map((tip, index) => (
-                <li key={index}>
-                  <FontAwesomeIcon icon={faLightbulb} className='mr-2' />
-                  {tip}
-                </li>
+                <li key={index}>{tip}</li>
               ))}
             </ul>
             <h5>
-              <FontAwesomeIcon icon={faUserCheck} className='mr-2' />
+              <FontAwesomeIcon icon={faCheckCircle} className='mr-2' />
               Personalized Recommendations
             </h5>
             <ul>
               {advice.personalizedRecommendations.map((rec, index) => (
-                <li key={index}>
-                  <FontAwesomeIcon icon={faLightbulb} className='mr-2' />
-                  {rec}
-                </li>
+                <li key={index}>{rec}</li>
               ))}
             </ul>
           </>

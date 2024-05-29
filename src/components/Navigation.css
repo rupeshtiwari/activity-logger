@@ -1,0 +1,37 @@
+/* src/components/Navigation.css */
+
+.navbar {
+  background-color: #283e4a; /* LinkedIn-like dark blue */
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-size: 1.2em;
+  margin-right: 1em;
+}
+
+.nav-link:hover {
+  color: #0a66c2 !important; /* LinkedIn blue */
+  text-decoration: underline;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #283e4a; /* LinkedIn-like dark blue */
+    padding: 1em;
+  }
+}

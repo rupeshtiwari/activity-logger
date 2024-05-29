@@ -1,134 +1,121 @@
 import React, { useEffect, useState } from 'react';
+import { Table, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../App.css';
-import { fetchDataFromServer } from '../data';
-import { Container, Table, Spinner, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faUser,
   faLink,
-  faEye,
+  faLevelUpAlt,
+  faStar,
+  faInfo,
   faSort,
-  faSortUp,
-  faSortDown,
 } from '@fortawesome/free-solid-svg-icons';
+import { fetchDataFromServer } from '../data';
+import './AdminPage.css';
 
 const AdminPage = () => {
   const [employees, setEmployees] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [sortConfig, setSortConfig] = useState({
     key: 'name',
-    direction: 'ascending',
+    direction: 'asc',
   });
 
   useEffect(() => {
     const fetchEmployees = async () => {
-      // Simulate fetching multiple employees for the admin dashboard
-      const employeeIds = [1, 2, 3, 4, 5];
-      const fetchedEmployees = await Promise.all(
-        employeeIds.map((id) => fetchDataFromServer(id))
-      );
-      setEmployees(fetchedEmployees.map((data) => data.employee));
-      setLoading(false);
+      const { employees } = await fetchDataFromServer();
+      setEmployees(employees);
     };
 
     fetchEmployees();
   }, []);
 
-  const sortEmployees = (employees, config) => {
-    const sortedEmployees = [...employees];
-    if (config !== null) {
-      sortedEmployees.sort((a, b) => {
-        if (a[config.key] < b[config.key]) {
-          return config.direction === 'ascending' ? -1 : 1;
-        }
-        if (a[config.key] > b[config.key]) {
-          return config.direction === 'ascending' ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortedEmployees;
-  };
-
-  const requestSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
+  const sortEmployees = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
     }
     setSortConfig({ key, direction });
+
+    setEmployees((prevEmployees) =>
+      [...prevEmployees].sort((a, b) => {
+        if (a[key] < b[key]) {
+          return direction === 'asc' ? -1 : 1;
+        }
+        if (a[key] > b[key]) {
+          return direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+      })
+    );
   };
 
-  const getIcon = (key) => {
+  const getSortIcon = (key) => {
     if (sortConfig.key === key) {
-      return sortConfig.direction === 'ascending' ? faSortUp : faSortDown;
-    } else {
-      return faSort;
+      return sortConfig.direction === 'asc' ? faSort : faSort;
     }
+    return faSort;
   };
-
-  if (loading) {
-    return <Spinner animation='border' />;
-  }
-
-  const sortedEmployees = sortEmployees(employees, sortConfig);
 
   return (
-    <Container className='mt-5'>
-      <h2>Admin Dashboard</h2>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th onClick={() => requestSort('name')} className='sortable-header'>
-              Name <FontAwesomeIcon icon={getIcon('name')} />
-            </th>
-            <th
-              onClick={() => requestSort('level')}
-              className='sortable-header'
-            >
-              Level <FontAwesomeIcon icon={getIcon('level')} />
-            </th>
-            <th
-              onClick={() => requestSort('score')}
-              className='sortable-header'
-            >
-              Total Score <FontAwesomeIcon icon={getIcon('score')} />
-            </th>
-            <th>Body of Work Link</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedEmployees.map((employee) => (
-            <tr key={employee.id}>
-              <td>{employee.name}</td>
-              <td>{employee.level}</td>
-              <td>{employee.score}</td>
-              <td>
-                <Button
-                  variant='link'
-                  href={employee.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='p-0'
-                >
-                  <FontAwesomeIcon icon={faLink} /> Link
-                </Button>
-              </td>
-              <td>
-                <Button
-                  as={Link}
-                  to={`/employee/${employee.id}`}
-                  variant='primary'
-                  size='sm'
-                >
-                  <FontAwesomeIcon icon={faEye} /> View Details
-                </Button>
-              </td>
+    <Card className='mb-4'>
+      <Card.Body>
+        <Card.Title>Admin Dashboard</Card.Title>
+        <Table striped bordered hover responsive>
+          <thead>
+            <tr>
+              <th
+                onClick={() => sortEmployees('name')}
+                style={{ cursor: 'pointer' }}
+              >
+                <FontAwesomeIcon icon={faUser} /> Name
+                <FontAwesomeIcon icon={getSortIcon('name')} className='ml-1' />
+              </th>
+              <th>
+                <FontAwesomeIcon icon={faLink} /> Body of Work Link
+              </th>
+              <th
+                onClick={() => sortEmployees('level')}
+                style={{ cursor: 'pointer' }}
+              >
+                <FontAwesomeIcon icon={faLevelUpAlt} /> Level
+                <FontAwesomeIcon icon={getSortIcon('level')} className='ml-1' />
+              </th>
+              <th
+                onClick={() => sortEmployees('score')}
+                style={{ cursor: 'pointer' }}
+              >
+                <FontAwesomeIcon icon={faStar} /> Total Score
+                <FontAwesomeIcon icon={getSortIcon('score')} className='ml-1' />
+              </th>
+              <th>
+                <FontAwesomeIcon icon={faInfo} /> Details
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
+          </thead>
+          <tbody>
+            {employees.map((employee) => (
+              <tr key={employee.id}>
+                <td>{employee.name}</td>
+                <td>
+                  <a
+                    href={employee.link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    View Profile
+                  </a>
+                </td>
+                <td>{employee.level}</td>
+                <td>{employee.score}</td>
+                <td>
+                  <Link to={`/employee/${employee.id}`}>View Details</Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Card.Body>
+    </Card>
   );
 };
 

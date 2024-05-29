@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
@@ -7,49 +7,51 @@ import {
   faLevelUpAlt,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
+import './EmployeeHeader.css';
 
-const EmployeeHeader = ({ name, link, level, score }) => {
+const EmployeeHeader = ({
+  name,
+  link,
+  level,
+  score,
+  picture,
+  title,
+  location,
+}) => {
   return (
-    <Card className='mb-4'>
+    <Card className='mb-4 employee-header'>
       <Card.Body>
-        <Row className='mb-2'>
-          <Col>
-            <h5>
-              <FontAwesomeIcon icon={faUser} className='mr-2' />
-              Employee Name: <span>{name}</span>
-            </h5>
+        <Row className='align-items-center'>
+          <Col xs={3} md={2}>
+            <Image
+              src={picture}
+              roundedCircle
+              fluid
+              className='employee-picture'
+            />
           </Col>
-        </Row>
-        <Row className='mb-2'>
-          <Col>
-            <h5>
-              <FontAwesomeIcon icon={faLink} className='mr-2' />
-              Body of Work Link:
-              <a
-                href={link}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='ml-2'
-              >
-                {link}
-              </a>
-            </h5>
-          </Col>
-        </Row>
-        <Row className='mb-2'>
-          <Col>
-            <h5>
-              <FontAwesomeIcon icon={faLevelUpAlt} className='mr-2' />
-              Level: <span>{level}</span>
-            </h5>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h5>
-              <FontAwesomeIcon icon={faStar} className='mr-2' />
-              Total Score: <span>{score}</span>
-            </h5>
+          <Col xs={9} md={10}>
+            <h3 className='employee-name'>{name}</h3>
+            <p className='employee-title'>{title}</p>
+            <p className='employee-location'>{location}</p>
+            <a
+              href={link}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='employee-link'
+            >
+              View Profile
+            </a>
+            <Row className='mt-2'>
+              <Col xs={6} md={4} className='employee-stats'>
+                <FontAwesomeIcon icon={faLevelUpAlt} className='mr-2' />
+                Level: <span>{level}</span>
+              </Col>
+              <Col xs={6} md={4} className='employee-stats'>
+                <FontAwesomeIcon icon={faStar} className='mr-2' />
+                Total Score: <span>{score}</span>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Card.Body>

@@ -2,8 +2,11 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import EmployeeDetailPage from '../pages/EmployeeDetailPage';
 import AdminPage from '../pages/AdminPage';
+import { getUserRole } from './Navigation'; // Assuming this is defined
 
-const AppRoutes = ({ userRole }) => {
+const AppRoutes = () => {
+  const userRole = getUserRole();
+
   return (
     <Routes>
       <Route path='/employee/:id' element={<EmployeeDetailPage />} />

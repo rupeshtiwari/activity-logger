@@ -3,37 +3,62 @@ const initialData = {
     {
       id: 1,
       name: 'Rofus RockStar',
-      link: 'https://quip-amazon.com/',
+      link: 'https://www.fakeprofile.com/user1',
       level: 6,
       score: 24,
+      picture: 'https://randomuser.me/api/portraits/men/1.jpg',
+      title: 'Software Engineer',
+      location: 'San Francisco, CA',
     },
     {
       id: 2,
       name: 'Jane Doe',
-      link: 'https://quip-amazon.com/',
+      link: 'https://www.fakeprofile.com/user2',
       level: 5,
       score: 20,
+      picture: 'https://randomuser.me/api/portraits/women/2.jpg',
+      title: 'Project Manager',
+      location: 'New York, NY',
     },
     {
       id: 3,
       name: 'John Smith',
-      link: 'https://quip-amazon.com/',
+      link: 'https://www.fakeprofile.com/user3',
       level: 7,
       score: 30,
+      picture: 'https://randomuser.me/api/portraits/men/3.jpg',
+      title: 'DevOps Engineer',
+      location: 'Austin, TX',
     },
     {
       id: 4,
       name: 'Alice Johnson',
-      link: 'https://quip-amazon.com/',
+      link: 'https://www.fakeprofile.com/user4',
       level: 4,
       score: 18,
+      picture: 'https://randomuser.me/api/portraits/women/4.jpg',
+      title: 'Product Manager',
+      location: 'Seattle, WA',
     },
     {
       id: 5,
       name: 'Bob Brown',
-      link: 'https://quip-amazon.com/',
+      link: 'https://www.fakeprofile.com/user5',
       level: 3,
       score: 15,
+      picture: 'https://randomuser.me/api/portraits/men/5.jpg',
+      title: 'UX Designer',
+      location: 'Los Angeles, CA',
+    },
+    {
+      id: 6,
+      name: 'Charlie Davis',
+      link: 'https://www.fakeprofile.com/user6',
+      level: 2,
+      score: 10,
+      picture: 'https://randomuser.me/api/portraits/men/6.jpg',
+      title: 'Intern',
+      location: 'Chicago, IL',
     },
   ],
   sections: [
@@ -80,12 +105,18 @@ const initialData = {
   ],
 };
 
-export const fetchDataFromServer = async (employeeId) => {
-  const employee = initialData.employees.find(
-    (e) => e.id === parseInt(employeeId)
-  );
+export const fetchDataFromServer = async (employeeId = null) => {
+  if (employeeId) {
+    const employee = initialData.employees.find(
+      (e) => e.id === parseInt(employeeId)
+    );
+    return {
+      employee,
+      sections: initialData.sections,
+    };
+  }
   return {
-    employee,
+    employees: initialData.employees,
     sections: initialData.sections,
   };
 };

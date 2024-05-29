@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 Live demo of this app: https://www.rupeshtiwari.com/activity-logger 
-
+Run in local `npm run start-with-mock` 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
