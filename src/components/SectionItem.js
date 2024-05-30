@@ -37,7 +37,10 @@ const SectionItem = ({ name, count, onUpdate }) => {
 
   const handleInputChange = (e) => {
     const value = parseInt(e.target.value, 10);
-    if (isNaN(value) || value <= config.maxPoints) {
+    if (isNaN(value)) {
+      setNewCount(''); // Set to empty string if value is NaN
+      setWarning('Invalid input');
+    } else if (value <= config.maxPoints) {
       setNewCount(value);
       setWarning('');
     } else {
@@ -56,7 +59,7 @@ const SectionItem = ({ name, count, onUpdate }) => {
           <>
             <FormControl
               type='number'
-              value={newCount}
+              value={newCount === '' ? '' : newCount} // Ensure value is never NaN
               onChange={handleInputChange}
               size='sm'
               max={config.maxPoints}
