@@ -48,10 +48,10 @@ const SectionItem = ({ name, count, onUpdate }) => {
 
   return (
     <Row className='align-items-center mb-2 section-item'>
-      <Col xs={6}>
+      <Col xs={6} md={4}>
         <span>{name}</span>
       </Col>
-      <Col xs={2}>
+      <Col xs={6} md={3}>
         {isEditing ? (
           <>
             <FormControl
@@ -74,10 +74,10 @@ const SectionItem = ({ name, count, onUpdate }) => {
             )}
           </>
         ) : (
-          <span>{count}</span>
+          <span className='section-item-count'>{count}</span>
         )}
       </Col>
-      <Col xs={4} className='text-right'>
+      <Col xs={12} md={5} className='text-right section-item-buttons'>
         {isEditing ? (
           <>
             <Button

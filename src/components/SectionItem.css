@@ -7,6 +7,7 @@
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
+  margin-bottom: 10px;
 }
 
 .section-item:hover {
@@ -19,7 +20,8 @@
 }
 
 .section-item .form-control {
-  max-width: 60px;
+  max-width: 100px;
+  margin-bottom: 10px;
 }
 
 .section-item .section-item-alert {
@@ -29,4 +31,43 @@
 
 .section-item .btn {
   margin-right: 5px;
+}
+
+.section-item-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.section-item-count {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .section-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-item .row {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .section-item .form-control {
+    width: 100%;
+  }
+
+  .section-item .btn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .section-item-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
 }

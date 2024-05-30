@@ -1,10 +1,7 @@
 import React from 'react';
 import { Card, Row, Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faLevelUpAlt,
-  faStar,
-} from '@fortawesome/free-solid-svg-icons';
+import { faLevelUpAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 import './EmployeeHeader.css';
 
 const EmployeeHeader = ({
@@ -20,7 +17,7 @@ const EmployeeHeader = ({
     <Card className='mb-4 employee-header'>
       <Card.Body>
         <Row className='align-items-center'>
-          <Col xs={3} md={2}>
+          <Col xs={4} sm={3} md={2}>
             <Image
               src={picture}
               roundedCircle
@@ -28,7 +25,7 @@ const EmployeeHeader = ({
               className='employee-picture'
             />
           </Col>
-          <Col xs={9} md={10}>
+          <Col xs={8} sm={9} md={10}>
             <h3 className='employee-name'>{name}</h3>
             <p className='employee-title'>{title}</p>
             <p className='employee-location'>{location}</p>
