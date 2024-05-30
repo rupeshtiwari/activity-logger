@@ -17,7 +17,7 @@ const EmployeeHeader = ({
     <Card className='mb-4 employee-header'>
       <Card.Body>
         <Row className='align-items-center'>
-          <Col xs={4} sm={3} md={2}>
+          <Col xs={12} md={2} className='text-center mb-3 mb-md-0'>
             <Image
               src={picture}
               roundedCircle
@@ -25,7 +25,7 @@ const EmployeeHeader = ({
               className='employee-picture'
             />
           </Col>
-          <Col xs={8} sm={9} md={10}>
+          <Col xs={12} md={10}>
             <h3 className='employee-name'>{name}</h3>
             <p className='employee-title'>{title}</p>
             <p className='employee-location'>{location}</p>
@@ -38,11 +38,11 @@ const EmployeeHeader = ({
               View Profile
             </a>
             <Row className='mt-2'>
-              <Col xs={6} md={4} className='employee-stats'>
+              <Col xs={6} className='employee-stats'>
                 <FontAwesomeIcon icon={faLevelUpAlt} className='mr-2' />
                 Level: <span>{level}</span>
               </Col>
-              <Col xs={6} md={4} className='employee-stats'>
+              <Col xs={6} className='employee-stats'>
                 <FontAwesomeIcon icon={faStar} className='mr-2' />
                 Total Score: <span>{score}</span>
               </Col>

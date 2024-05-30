@@ -1,202 +1,96 @@
-/* src/App.css */
+/* src/components/EmployeeHeader.css */
 
-/* General Styles */
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f3f2ef;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #0073b1;
-  font-weight: bold;
-  margin: 0;
-}
-
-h5 {
-  font-size: 1.25em;
-}
-
-a {
-  color: #0073b1;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-button {
-  margin-right: 8px;
-  background-color: #0073b1;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #005f8d;
-}
-
-.card {
+/* Card styling */
+.employee-header {
   border: 1px solid #e1e4e8;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
   padding: 20px;
   background-color: #fff;
-}
-
-/* Navigation Bar */
-.navbar {
-  background-color: #0073b1;
-  padding: 10px 20px;
-  border-bottom: 1px solid #e1e4e8;
-}
-
-.navbar-brand {
-  color: white;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-.navbar-nav .nav-link {
-  color: white;
-  margin-right: 15px;
-  font-size: 1.1em;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #e1e4e8;
-}
-
-.navbar-nav .nav-item.active .nav-link {
-  color: #e1e4e8;
-  font-weight: bold;
-}
-
-/* Card Styles */
-.card-body {
-  padding: 20px;
-}
-
-.card-title {
-  font-size: 1.5em;
   margin-bottom: 20px;
+}
+
+/* Image styling */
+.employee-picture {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #0073b1;
+}
+
+/* Name styling */
+.employee-name {
+  font-size: 1.5em;
   color: #333;
-}
-
-/* Form Control */
-.form-control {
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  padding: 8px 12px;
-}
-
-.form-control:focus {
-  border-color: #0073b1;
-  box-shadow: none;
-}
-
-/* Table Styles */
-.table {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.table th,
-.table td {
-  text-align: left;
-  padding: 12px 15px;
-  border-top: 1px solid #e1e4e8;
-}
-
-.table th {
-  background-color: #f9fafb;
-  color: #0073b1;
   font-weight: bold;
 }
 
-.table-hover tbody tr:hover {
-  background-color: #f3f2ef;
+/* Title styling */
+.employee-title {
+  font-size: 1.2em;
+  color: #555;
 }
 
-.table-responsive {
-  margin-bottom: 20px;
+/* Location styling */
+.employee-location {
+  font-size: 1em;
+  color: #888;
 }
 
-/* Custom Alerts */
-.alert {
+/* Link styling */
+.employee-link {
+  color: #0073b1;
+  font-size: 1em;
+  display: inline-block;
   margin-top: 10px;
-  font-size: 0.9em;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.employee-link:hover {
+  text-decoration: underline;
+}
+
+/* Stats styling */
+.employee-stats {
+  font-size: 1em;
+  color: #333;
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-radius: 4px;
 }
 
-.alert-danger {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-color: #f5c6cb;
-}
-
-.alert .mr-1 {
+.employee-stats .mr-2 {
   margin-right: 8px;
 }
 
-/* Button Styles */
-.btn-outline-primary {
-  color: #0073b1;
-  border-color: #0073b1;
-}
-
-.btn-outline-primary:hover {
-  background-color: #0073b1;
-  color: white;
-}
-
-.btn-outline-success {
-  color: #28a745;
-  border-color: #28a745;
-}
-
-.btn-outline-success:hover {
-  background-color: #28a745;
-  color: white;
-}
-
-.btn-outline-danger {
-  color: #dc3545;
-  border-color: #dc3545;
-}
-
-.btn-outline-danger:hover {
-  background-color: #dc3545;
-  color: white;
-}
-
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .navbar-nav .nav-link {
-    margin-right: 8px;
-    font-size: 1em;
-  }
-
-  .card-body {
+  .employee-header {
     padding: 15px;
   }
 
-  .card-title {
-    font-size: 1.3em;
+  .employee-picture {
+    width: 80px;
+    height: 80px;
   }
 
-  .table th,
-  .table td {
-    padding: 10px 12px;
+  .employee-name {
+    font-size: 1.2em;
+  }
+
+  .employee-title {
+    font-size: 1em;
+  }
+
+  .employee-location {
+    font-size: 0.9em;
+  }
+
+  .employee-link {
+    font-size: 0.9em;
+  }
+
+  .employee-stats {
+    font-size: 0.9em;
   }
 }
