@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchDataFromServer } from '../data';  
+import { fetchDataFromServer } from '../data';
 import EmployeeHeader from '../components/EmployeeHeader';
 import Section from '../components/Section';
-import SummaryGraph from '../components/SummaryGraph';  
+import SummaryGraph from '../components/SummaryGraph';
 import AIAssistant from '../components/AIAssistant';
 
 const EmployeeDetailPage = () => {
@@ -21,9 +21,25 @@ const EmployeeDetailPage = () => {
     fetchData();
   }, [id]);
 
+  const calculateTotalScore = (sections) => {
+    return sections.reduce(
+      (total, section) =>
+        total + section.items.reduce((acc, item) => acc + item.count, 0),
+      0
+    );
+  };
+
+  const handleUpdate = (sectionIndex, itemIndex, newCount) => {
+    const newSections = [...sections];
+    newSections[sectionIndex].items[itemIndex].count = newCount;
+    setSections(newSections);
+  };
+
   if (!employee) {
     return <div>Loading...</div>;
   }
+
+  const totalScore = calculateTotalScore(sections);
 
   return (
     <>
@@ -31,7 +47,7 @@ const EmployeeDetailPage = () => {
         name={employee.name}
         link={employee.link}
         level={employee.level}
-        score={employee.score}
+        score={totalScore}
         picture={employee.picture}
         title={employee.title}
         location={employee.location}
@@ -45,16 +61,14 @@ const EmployeeDetailPage = () => {
         }}
       />
       <AIAssistant employeeId={id} />
-      {sections.map((section, index) => (
+      {sections.map((section, sectionIndex) => (
         <Section
-          key={index}
+          key={sectionIndex}
           title={section.title}
           items={section.items}
-          onUpdate={(i, value) => {
-            const newSections = [...sections];
-            newSections[index].items[i].count = value;
-            setSections(newSections);
-          }}
+          onUpdate={(itemIndex, value) =>
+            handleUpdate(sectionIndex, itemIndex, value)
+          }
         />
       ))}
     </>
